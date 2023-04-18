@@ -224,7 +224,7 @@ module.exports = {
     arguments : ['user', 'host', 'resource', 'type', 'show', 'status', 'priority']
   },
   set_room_affiliation: {
-    arguments : ['name', 'server', 'jid', 'affiliation']
+    arguments : ['name', 'service', 'jid', 'affiliation']
   },
   set_vcard: {
     arguments : ['user', 'host', 'name', 'content']
