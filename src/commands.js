@@ -140,10 +140,10 @@ module.exports = {
     arguments : ['host', 'regex']
   },
   muc_register_nick: {
-    arguments : ['nick', 'jid', 'serverhost']
+    arguments : ['nick', 'jid', 'service']
   },
   muc_unregister_nick: {
-    arguments : ['jid', 'serverhost']
+    arguments : ['jid', 'service']
   },
   num_active_users: {
     arguments : ['host', 'days']
