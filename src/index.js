@@ -3,9 +3,11 @@ const camelCase = require('lodash.camelcase');
 const commands = require('./commands.js');
 
 class Client {
-  constructor(hostname = 'localhost', port = 5443) {
+  constructor(hostname = 'localhost', port = 5443, username, password) {
     this.hostname = hostname;
     this.port     = port;
+    this.username = username;
+    this.password = password;
 
     Object.entries(commands).forEach(([command, description]) => {
       this[camelCase(command)] = (...args) => {
@@ -27,6 +29,7 @@ class Client {
       method : 'post',
       url    : `https://${this.hostname}:${this.port}/api/${command}`,
       data,
+      auth: username && password? { username, password } : undefined,
       headers : {
         'Content-Type'   : 'application/json',
         'Content-Length' : json.length
