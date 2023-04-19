@@ -29,7 +29,7 @@ class Client {
       method : 'post',
       url    : `https://${this.hostname}:${this.port}/api/${command}`,
       data,
-      auth: username && password? { username, password } : undefined,
+      auth: this.username && this.password? { username: this.username, password: this.password } : undefined,
       headers : {
         'Content-Type'   : 'application/json',
         'Content-Length' : json.length
