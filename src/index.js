@@ -3,11 +3,12 @@ const camelCase = require('lodash.camelcase');
 const commands = require('./commands.js');
 
 class Client {
-  constructor(hostname = 'localhost', port = 5443, username, password) {
+  constructor(hostname = 'localhost', port = 5443, username, password, reqOptions = {}) {
     this.hostname = hostname;
     this.port     = port;
     this.username = username;
     this.password = password;
+    this.reqOptions = reqOptions;
 
     Object.entries(commands).forEach(([command, description]) => {
       this[camelCase(command)] = (...args) => {
@@ -34,7 +35,8 @@ class Client {
         'Content-Type'   : 'application/json',
         'Content-Length' : json.length
       },
-      timeout : 1000
+      timeout : 1000,
+        ...this.reqOptions
     })
     .then(
       response => response.data
